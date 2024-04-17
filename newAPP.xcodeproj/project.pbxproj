@@ -15,6 +15,9 @@
 		D8A181FB2BCCFFEA00D3F10C /* newAPPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181FA2BCCFFEA00D3F10C /* newAPPUITests.swift */; };
 		D8A181FD2BCCFFEA00D3F10C /* newAPPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181FC2BCCFFEA00D3F10C /* newAPPUITestsLaunchTests.swift */; };
 		D8F326E52BCD00B10066B411 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8F326E42BCD00B10066B411 /* YouTubeKit */; };
+		D8F326EE2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */; };
+		D8F326FB2BCE45A40066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
+		D8F326FC2BCE45A50066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		D8A181FA2BCCFFEA00D3F10C /* newAPPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPUITests.swift; sourceTree = "<group>"; };
 		D8A181FC2BCCFFEA00D3F10C /* newAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D8F326E62BCD02530066B411 /* YouTubeKit */ = {isa = PBXFileReference; lastKnownFileType = text; path = YouTubeKit; sourceTree = SOURCE_ROOT; };
+		D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */,
 				D8A181E02BCCFFE600D3F10C /* ContentView.swift */,
 				D8A181E22BCCFFE900D3F10C /* Assets.xcassets */,
+				D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */,
 				D8A181E72BCCFFE900D3F10C /* newAPP.entitlements */,
 				D8A181E42BCCFFE900D3F10C /* Preview Content */,
 			);
@@ -243,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F326EE2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg in Resources */,
 				D8A181E62BCCFFE900D3F10C /* Preview Assets.xcassets in Resources */,
 				D8A181E32BCCFFE900D3F10C /* Assets.xcassets in Resources */,
 			);
@@ -252,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F326FB2BCE45A40066B411 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F326FC2BCE45A50066B411 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +437,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = newAPP/newAPP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -454,7 +464,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = newAPP/newAPP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
