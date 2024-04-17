@@ -7,6 +7,7 @@
 
 import SwiftUI
 import YouTubeKit
+import AVKit
 
 struct ContentView: View {
     private var YTM = YouTubeModel()
@@ -15,50 +16,65 @@ struct ContentView: View {
     @State private var isLoading: Bool = false
     @State private var videoIds: [String] = []
     @State private var titles: [String] = []
+    @State private var avPlayer: AVPlayer?
 
     var body: some View {
         VStack {
             HStack {
                 TextField("Search", text: $text)
                     .padding()
-
+                
                 Button("Search") {
                     searchVideos()
                 }
                 .padding()
-            }
-
-            if isLoading {
-                ProgressView()
-            }
-
-            Divider()
-
-            if let searchResults = searchResults {
-                LazyVGrid(columns: Array(repeating: GridItem(), count: 3), spacing: 20) {
-                    ForEach(0..<searchResults.results.count, id: \.self) { index in
-                        Button(action: {
-                            openYouTubeVideo(videoId: videoIds[index])
-                        }) {
-                            VStack {
-                                // Display the thumbnail image here
-                                /*Image(systemName: "play.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(.blue)*/
-
-                                Text(titles[index])
-                                    .font(.caption)
-                                    .foregroundColor(.black)
+                
+                if isLoading {
+                    ProgressView()
+                }
+                
+                Divider()
+                
+                if let searchResults = searchResults {
+                    LazyVGrid(columns: Array(repeating: GridItem(), count: 3), spacing: 20) {
+                        ForEach(0..<searchResults.results.count, id: \.self) { index in
+                            Button(action: {
+                                let url = openYouTubeVideo(videoId: videoIds[index])
+                                print(url)
+                                let player = AVPlayer(url: url)
+                                self.avPlayer = player
+                            }) {
+                                VStack {
+                                    Text(videoIds[index])
+                                        .font(.caption)
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
+                
+                if let avPlayer = avPlayer {
+                    Divider()
+                    VideoPlayerContainer(player: avPlayer)
+                        .frame(width: 500)
+                }
             }
+            .frame(width: 300, height: 500)
+            
+            
+            Divider()
+            HStack {
+                Text("diet")
+                Divider()
+                Text("workout")
+            }
+            
+            Spacer()
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     func searchVideos() {
@@ -79,15 +95,12 @@ struct ContentView: View {
                     for result in result.results {
                         let string = String(describing: result)
                         if let videoId = extractValueAfterSubstring(in: string, substring: "videoId") {
-                            //print(videoId)
                             videoIds.append(videoId)
                         } else {
                             print("Video ID not found.")
                         }
 
                         if let title = extractValueAfterSubstring(in: string, substring: "title") {
-                            //print("title: ")
-                            //print(title)
                             titles.append(title)
                         } else {
                             titles.append("")
@@ -99,9 +112,10 @@ struct ContentView: View {
         }
     }
 
-    func openYouTubeVideo(videoId: String) {
+    func openYouTubeVideo(videoId: String) -> URL {
         let url = URL(string: "https://www.youtube.com/watch?v=\(videoId)")!
-        NSWorkspace.shared.open(url)
+        print(url)
+        return url
     }
 
     func extractValueAfterSubstring(in string: String, substring: String) -> String? {
@@ -116,4 +130,16 @@ struct ContentView: View {
         }
         return nil
     }
+}
+
+struct VideoPlayerContainer: NSViewRepresentable {
+    let player: AVPlayer
+
+    func makeNSView(context: Context) -> AVPlayerView {
+        let view = AVPlayerView()
+        view.player = player
+        return view
+    }
+
+    func updateNSView(_ nsView: AVPlayerView, context: Context) {}
 }
