@@ -23,11 +23,13 @@ struct ContentView: View {
             HStack {
                 TextField("Search", text: $text)
                     .padding()
+                    .frame(width: 100)
 
                 Button("Search") {
                     searchVideos()
                 }
                 .padding()
+                .frame(width: 100)
 
                 if isLoading {
                     ProgressView()
@@ -53,7 +55,10 @@ struct ContentView: View {
                     .padding()
                 }
             }
-            .frame(width: 300, height: 200)
+            .frame(height: 200)
+            .background(Color.blue.opacity(0.1))
+            .cornerRadius(10)
+            .padding()
 
             if let webView = webView {
                 WebViewContainer(webView: webView)
@@ -61,16 +66,25 @@ struct ContentView: View {
             }
 
             Divider()
-            VStack {
-                HStack {
-                    Text("diet")
-                    Divider()
-                    Text("workout")
-                }
+            HStack {
+                Text("Diet")
+                    .padding()
+                    .background(Color.green.opacity(0.3))
+                    .cornerRadius(5)
+
+                Divider()
+
+                Text("Workout")
+                    .padding()
+                    .background(Color.orange.opacity(0.3))
+                    .cornerRadius(5)
             }
+            .padding()
+            .cornerRadius(10)
+            .padding()
+
             Spacer()
         }
-        .padding()
     }
 
     func searchVideos() {
@@ -93,14 +107,14 @@ struct ContentView: View {
                         if let videoId = extractValueAfterSubstring(in: string, substring: "videoId") {
                             videoIds.append(videoId)
                         } else {
-                            print("Video ID not found.")
+                            //print("Video ID not found.")
                         }
 
                         if let title = extractValueAfterSubstring(in: string, substring: "title") {
                             titles.append(title)
                         } else {
                             titles.append("")
-                            print("Video title not found.")
+                            //print("Video title not found.")
                         }
                     }
                 }
@@ -145,4 +159,3 @@ struct WebViewContainer: NSViewRepresentable {
     func updateNSView(_ nsView: WKWebView, context: Context) {
     }
 }
- 
