@@ -21,6 +21,10 @@ struct ContentView: View {
     @State private var foodName: String = ""
     @State private var caloriesText: String = ""
     
+    init() {
+        foods = DataManager.shared.loadFoodItems()
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -86,6 +90,7 @@ struct ContentView: View {
                             foods.append(newFood)
                             foodName = ""
                             caloriesText = ""
+                            DataManager.shared.saveFoodItems(foods)
                         }
                     }
                     .padding()
@@ -96,7 +101,7 @@ struct ContentView: View {
                             Text(food.name)
                             Text("\(food.calories) calories")
                                 .font(.caption)
-                                .foregroundColor(.gray)                            
+                                .foregroundColor(.gray)
                         }
                     }
                     .padding()
@@ -123,6 +128,9 @@ struct ContentView: View {
             .padding()
 
             Spacer()
+        }
+        .onAppear {
+            foods = DataManager.shared.loadFoodItems()
         }
     }
 

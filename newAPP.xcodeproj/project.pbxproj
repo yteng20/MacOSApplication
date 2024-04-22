@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81EBBBD2BD07B5800987C36 /* WebViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */; };
+		D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBE2BD614A600987C36 /* FoodItem.swift */; };
+		D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC12BD6156800987C36 /* PieChartView.swift */; };
+		D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC32BD668E900987C36 /* DataManager.swift */; };
 		D8A181DF2BCCFFE600D3F10C /* newAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */; };
 		D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181E02BCCFFE600D3F10C /* ContentView.swift */; };
 		D8A181E32BCCFFE900D3F10C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewContainer.swift; sourceTree = "<group>"; };
+		D81EBBBE2BD614A600987C36 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		D81EBBC12BD6156800987C36 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		D81EBBC32BD668E900987C36 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D8A181DB2BCCFFE600D3F10C /* newAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPApp.swift; sourceTree = "<group>"; };
 		D8A181E02BCCFFE600D3F10C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */,
 				D8A181E72BCCFFE900D3F10C /* newAPP.entitlements */,
 				D8A181E42BCCFFE900D3F10C /* Preview Content */,
+				D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */,
+				D81EBBBE2BD614A600987C36 /* FoodItem.swift */,
+				D81EBBC12BD6156800987C36 /* PieChartView.swift */,
+				D81EBBC32BD668E900987C36 /* DataManager.swift */,
 			);
 			path = newAPP;
 			sourceTree = "<group>";
@@ -277,7 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */,
+				D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */,
+				D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */,
 				D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */,
+				D81EBBBD2BD07B5800987C36 /* WebViewContainer.swift in Sources */,
 				D8A181DF2BCCFFE600D3F10C /* newAPPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +365,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -412,6 +429,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -443,6 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"newAPP/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -469,6 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"newAPP/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -492,6 +512,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.6;
 				MARKETING_VERSION = 1.0;
@@ -510,6 +531,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.6;
 				MARKETING_VERSION = 1.0;
@@ -527,6 +549,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SDL-10.newAPPUITests";
@@ -543,6 +566,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SDL-10.newAPPUITests";

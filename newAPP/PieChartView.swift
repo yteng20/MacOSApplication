@@ -18,7 +18,7 @@ struct PieChart: View {
                     PathShape(data: data,
                               colors: colors,
                               index: index)
-                        .fill(colors[index]) // Fill the arc with the corresponding color
+                        .fill(colors[index])
                         .frame(width: min(geometry.size.width, geometry.size.height),
                                height: min(geometry.size.width, geometry.size.height))
                         .offset(x: (geometry.size.width - min(geometry.size.width, geometry.size.height)) / 2,
@@ -56,4 +56,6 @@ struct PieChart: View {
             return path
         }
     }
+    
+    
 }
