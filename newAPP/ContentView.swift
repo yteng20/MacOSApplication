@@ -17,7 +17,10 @@ struct ContentView: View {
     @State private var videoIds: [String] = []
     @State private var titles: [String] = []
     @State private var webView: WKWebView?
-
+    @State private var foods: [FoodItem] = []
+    @State private var foodName: String = ""
+    @State private var caloriesText: String = ""
+    
     var body: some View {
         VStack {
             HStack {
@@ -68,9 +71,45 @@ struct ContentView: View {
             Divider()
             HStack {
                 Text("Diet")
+                VStack {
+                    TextField("Food Name", text: $foodName)
+                        .padding()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    TextField("Calories", text: $caloriesText)
+                        .padding()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Button("Add Food") {
+                        if let calories = Int(caloriesText) {
+                            let newFood = FoodItem(name: foodName, calories: calories)
+                            foods.append(newFood)
+                            foodName = ""
+                            caloriesText = ""
+                        }
+                    }
                     .padding()
-                    .background(Color.green.opacity(0.3))
-                    .cornerRadius(5)
+                    .cornerRadius(10)
+                    
+                    List(foods) { food in
+                        VStack(alignment: .leading) {
+                            Text(food.name)
+                            Text("\(food.calories) calories")
+                                .font(.caption)
+                                .foregroundColor(.gray)                            
+                        }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+
+                    
+                    if !foods.isEmpty {
+                        PieChart(data: foods.map { Double($0.calories) }, colors: [.red, .green, .blue, .orange, .purple])
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding()
+                    }
+                }
 
                 Divider()
 
@@ -146,16 +185,5 @@ struct ContentView: View {
             return String(string[range])
         }
         return nil
-    }
-}
-
-struct WebViewContainer: NSViewRepresentable {
-    let webView: WKWebView
-
-    func makeNSView(context: Context) -> WKWebView {
-        return webView
-    }
-
-    func updateNSView(_ nsView: WKWebView, context: Context) {
     }
 }
