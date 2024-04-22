@@ -57,5 +57,4 @@ struct PieChart: View {
         }
     }
     
-    
 }

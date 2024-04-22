@@ -29,11 +29,12 @@ class DataManager {
     func loadFoodItems() -> [FoodItem] {
         do {
             let url = getDocumentsDirectory().appendingPathComponent(filename)
-            print(url)
+            //print(url)
             let data = try Data(contentsOf: url)
+            //print(type(of: data))
             let decoder = JSONDecoder()
             let foodItems = try decoder.decode([FoodItem].self, from: data)
-            print(foodItems)
+            //print(type(of: foodItems))
             return foodItems
         } catch {
             print("Error loading food items: \(error.localizedDescription)")

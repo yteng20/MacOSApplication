@@ -26,56 +26,48 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                TextField("Search", text: $text)
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    TextField("Search", text: $text)
+                        .padding()
+                        .frame(width: 150)
+                    
+                    Button("Search") {
+                        searchVideos()
+                    }
                     .padding()
-                    .frame(width: 100)
-
-                Button("Search") {
-                    searchVideos()
+                    .frame(minWidth: 100)
                 }
                 .padding()
-                .frame(width: 100)
-
+                
                 if isLoading {
                     ProgressView()
                 }
-
-                Divider()
-
+                
                 if let searchResults = searchResults {
-                    LazyVGrid(columns: Array(repeating: GridItem(), count: 10), spacing: 20) {
-                        ForEach(0..<searchResults.results.count, id: \.self) { index in
-                            Button(action: {
-                                let url = openYouTubeVideo(videoId: videoIds[index])
-                                loadURL(url)
-                            }) {
-                                VStack {
-                                    Text(titles[index])
-                                        .font(.caption)
-                                        .foregroundColor(.black)
-                                }
-                            }
+                    List(0..<searchResults.results.count, id: \.self) { index in
+                        Button(action: {
+                            let url = openYouTubeVideo(videoId: videoIds[index])
+                            loadURL(url)
+                        }) {
+                            Text(titles[index])
                         }
                     }
-                    .padding()
+                    .frame(maxWidth: 300)
                 }
             }
-            .frame(height: 200)
-            .background(Color.blue.opacity(0.1))
-            .cornerRadius(10)
-            .padding()
-
+            
             if let webView = webView {
                 WebViewContainer(webView: webView)
-                    .frame(height: 300)
+                    .frame(width: 640, height: 360)
             }
-
-            Divider()
-            HStack {
+            
+            VStack {
                 Text("Diet")
-                VStack {
+                    .font(.title)
+                
+                HStack {
                     TextField("Food Name", text: $foodName)
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -95,40 +87,36 @@ struct ContentView: View {
                     }
                     .padding()
                     .cornerRadius(10)
-                    
-                    List(foods) { food in
-                        VStack(alignment: .leading) {
-                            Text(food.name)
-                            Text("\(food.calories) calories")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(10)
-
-                    
-                    if !foods.isEmpty {
-                        PieChart(data: foods.map { Double($0.calories) }, colors: [.red, .green, .blue, .orange, .purple])
-                            .aspectRatio(1, contentMode: .fit)
-                            .padding()
+                }
+                
+                List(foods) { food in
+                    VStack(alignment: .leading) {
+                        Text(food.name)
+                        Text("\(food.calories) calories")
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
                 }
-
-                Divider()
-
+                .padding()
+                .frame(maxWidth: .infinity)
+                .cornerRadius(10)
+                
+                if !foods.isEmpty {
+                    PieChart(data: foods.map { Double($0.calories) }, colors: [.red, .green, .blue, .orange, .purple])
+                        .aspectRatio(1, contentMode: .fit)
+                        .padding()
+                }
+                
                 Text("Workout")
+                    .font(.title)
                     .padding()
                     .background(Color.orange.opacity(0.3))
                     .cornerRadius(5)
             }
             .padding()
-            .cornerRadius(10)
-            .padding()
-
-            Spacer()
+            .frame(minWidth: 300)
         }
+        .padding()
         .onAppear {
             foods = DataManager.shared.loadFoodItems()
         }
@@ -148,10 +136,9 @@ struct ContentView: View {
                     print("Error searching videos: \(error)")
                 } else if let result = result {
                     searchResults = result
-
                     for result in result.results {
                         let string = String(describing: result)
-                        if let videoId = extractValueAfterSubstring(in: string, substring: "videoId") {
+                        if let videoId = extractValueAfterSubstring1(in: string, substring: "videoId") {
                             videoIds.append(videoId)
                         } else {
                             //print("Video ID not found.")
@@ -160,7 +147,6 @@ struct ContentView: View {
                         if let title = extractValueAfterSubstring(in: string, substring: "title") {
                             titles.append(title)
                         } else {
-                            titles.append("")
                             //print("Video title not found.")
                         }
                     }
@@ -181,10 +167,23 @@ struct ContentView: View {
         let url = URL(string: "https://www.youtube.com/watch?v=\(videoId)")!
         return url
     }
-
-    func extractValueAfterSubstring(in string: String, substring: String) -> String? {
+    
+    func extractValueAfterSubstring1(in string: String, substring: String) -> String? {
         let pattern = "\(substring): \"([^\"]+)\""
         guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            return nil
+        }
+        let matches = regex.matches(in: string, range: NSRange(string.startIndex..., in: string))
+        for match in matches {
+            let range = Range(match.range(at: 1), in: string)!
+            return String(string[range])
+        }
+        return nil
+    }
+    
+    func extractValueAfterSubstring(in string: String, substring: String) -> String? {
+        let pattern = "\(substring): Optional\\(\"([^\"]+)\"\\)"
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
             return nil
         }
         let matches = regex.matches(in: string, range: NSRange(string.startIndex..., in: string))
