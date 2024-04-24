@@ -147,6 +147,7 @@ struct ContentView: View {
                         if let title = extractValueAfterSubstring(in: string, substring: "title") {
                             titles.append(title)
                         } else {
+                            titles.append("")
                             //print("Video title not found.")
                         }
                     }
