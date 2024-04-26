@@ -11,7 +11,10 @@
 		D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBE2BD614A600987C36 /* FoodItem.swift */; };
 		D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC12BD6156800987C36 /* PieChartView.swift */; };
 		D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC32BD668E900987C36 /* DataManager.swift */; };
-		D81EBBC62BD67AEF00987C36 /* YouTubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC52BD67AEF00987C36 /* YouTubeVideo.swift */; };
+		D81EBC092BD98D7700987C36 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC082BD98D7700987C36 /* ContentViewModel.swift */; };
+		D81EBC0F2BD9A51700987C36 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC0E2BD9A51700987C36 /* SearchBar.swift */; };
+		D81EBC112BD9A52F00987C36 /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC102BD9A52F00987C36 /* VideoList.swift */; };
+		D81EBC132BD9A56D00987C36 /* DietView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC122BD9A56D00987C36 /* DietView.swift */; };
 		D8A181DF2BCCFFE600D3F10C /* newAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */; };
 		D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181E02BCCFFE600D3F10C /* ContentView.swift */; };
 		D8A181E32BCCFFE900D3F10C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
@@ -23,6 +26,7 @@
 		D8F326EE2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */; };
 		D8F326FB2BCE45A40066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
 		D8F326FC2BCE45A50066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
+		D8FD3E382BDB8196001FACEF /* WebViewNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3E372BDB8155001FACEF /* WebViewNavigationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +51,10 @@
 		D81EBBBE2BD614A600987C36 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		D81EBBC12BD6156800987C36 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		D81EBBC32BD668E900987C36 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		D81EBBC52BD67AEF00987C36 /* YouTubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeVideo.swift; sourceTree = "<group>"; };
+		D81EBC082BD98D7700987C36 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		D81EBC0E2BD9A51700987C36 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		D81EBC102BD9A52F00987C36 /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
+		D81EBC122BD9A56D00987C36 /* DietView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietView.swift; sourceTree = "<group>"; };
 		D8A181DB2BCCFFE600D3F10C /* FitnessTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPApp.swift; sourceTree = "<group>"; };
 		D8A181E02BCCFFE600D3F10C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 		D8A181FC2BCCFFEA00D3F10C /* newAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D8F326E62BCD02530066B411 /* YouTubeKit */ = {isa = PBXFileReference; lastKnownFileType = text; path = YouTubeKit; sourceTree = SOURCE_ROOT; };
 		D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg"; sourceTree = SOURCE_ROOT; };
+		D8FD3E372BDB8155001FACEF /* WebViewNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewNavigationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81EBC042BD98D4300987C36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */,
+				D8FD3E372BDB8155001FACEF /* WebViewNavigationDelegate.swift */,
+				D81EBBC12BD6156800987C36 /* PieChartView.swift */,
+				D8A181E02BCCFFE600D3F10C /* ContentView.swift */,
+				D81EBC0E2BD9A51700987C36 /* SearchBar.swift */,
+				D81EBC102BD9A52F00987C36 /* VideoList.swift */,
+				D81EBC122BD9A56D00987C36 /* DietView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D81EBC072BD98D6900987C36 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				D81EBC082BD98D7700987C36 /* ContentViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		D81EBC152BD9AB1D00987C36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D81EBBBE2BD614A600987C36 /* FoodItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D8A181D22BCCFFE600D3F10C = {
 			isa = PBXGroup;
 			children = (
@@ -112,18 +150,16 @@
 		D8A181DD2BCCFFE600D3F10C /* newAPP */ = {
 			isa = PBXGroup;
 			children = (
-				D8F326E62BCD02530066B411 /* YouTubeKit */,
+				D8A181E42BCCFFE900D3F10C /* Preview Content */,
 				D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */,
-				D8A181E02BCCFFE600D3F10C /* ContentView.swift */,
+				D81EBBC32BD668E900987C36 /* DataManager.swift */,
+				D81EBC152BD9AB1D00987C36 /* Model */,
+				D81EBC072BD98D6900987C36 /* View Model */,
+				D81EBC042BD98D4300987C36 /* View */,
+				D8F326E62BCD02530066B411 /* YouTubeKit */,
 				D8A181E22BCCFFE900D3F10C /* Assets.xcassets */,
 				D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */,
 				D8A181E72BCCFFE900D3F10C /* newAPP.entitlements */,
-				D8A181E42BCCFFE900D3F10C /* Preview Content */,
-				D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */,
-				D81EBBBE2BD614A600987C36 /* FoodItem.swift */,
-				D81EBBC12BD6156800987C36 /* PieChartView.swift */,
-				D81EBBC32BD668E900987C36 /* DataManager.swift */,
-				D81EBBC52BD67AEF00987C36 /* YouTubeVideo.swift */,
 			);
 			path = newAPP;
 			sourceTree = "<group>";
@@ -292,13 +328,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81EBC132BD9A56D00987C36 /* DietView.swift in Sources */,
+				D81EBC112BD9A52F00987C36 /* VideoList.swift in Sources */,
 				D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */,
 				D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */,
-				D81EBBC62BD67AEF00987C36 /* YouTubeVideo.swift in Sources */,
 				D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */,
+				D81EBC092BD98D7700987C36 /* ContentViewModel.swift in Sources */,
 				D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */,
+				D81EBC0F2BD9A51700987C36 /* SearchBar.swift in Sources */,
 				D81EBBBD2BD07B5800987C36 /* WebViewContainer.swift in Sources */,
 				D8A181DF2BCCFFE600D3F10C /* newAPPApp.swift in Sources */,
+				D8FD3E382BDB8196001FACEF /* WebViewNavigationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
