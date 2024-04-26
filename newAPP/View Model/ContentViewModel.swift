@@ -16,6 +16,7 @@ class ContentViewModel: ObservableObject {
     @Published var videoIds: [String] = []
     @Published var titles: [String] = []
     @Published var videoDurations: [String: TimeInterval] = [:]
+    @Published var videoHistory: [(id: UUID, title: String?, duration: TimeInterval)] = []
 
     @Published var webView: WKWebView?
     @Published var foods: [FoodItem] = []

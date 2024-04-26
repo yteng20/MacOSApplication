@@ -61,6 +61,16 @@ struct VideoHistory: View {
             .padding()
             .frame(maxWidth: .infinity)
             .cornerRadius(10)
+
+            Text("Video Watch Time")
+                .font(.title)
+
+            if !viewModel.videoDurations.isEmpty {
+                PieChart(data: viewModel.videoDurations.map { Double($0.value) },
+                         colors: [.red, .green, .blue, .orange, .purple])
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding()
+            }
         }
         .padding()
         .frame(minWidth: 300)
