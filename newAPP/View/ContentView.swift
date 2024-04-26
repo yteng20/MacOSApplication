@@ -30,11 +30,47 @@ struct ContentView: View {
                 WebViewContainer(viewModel: viewModel, webView: webView)
                     .frame(width: 640, height: 360)
             }
-            DietView(viewModel: viewModel)
+            VideoHistory(viewModel: viewModel)
         }
         .padding()
-        .onAppear {
-            viewModel.loadFoodItems()
+    }
+}
+
+struct VideoHistory: View {
+    @ObservedObject var viewModel: ContentViewModel
+
+    var body: some View {
+        VStack {
+            Text("Video History")
+                .font(.title)
+            List {
+                ForEach(viewModel.videoHistory, id: \.id) { video in
+                    HStack {
+                        if let title = video.title {
+                            Text(title)
+                        } else {
+                            Text("Unknown Title")
+                        }
+                        Spacer()
+                        Text(formatDuration(video.duration))
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .cornerRadius(10)
         }
+        .padding()
+        .frame(minWidth: 300)
+    }
+
+    func formatDuration(_ duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: duration) ?? ""
     }
 }
