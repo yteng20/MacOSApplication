@@ -14,10 +14,17 @@ struct WebViewContainer: NSViewRepresentable {
     let webView: WKWebView
     private let navigationDelegate: WebViewNavigationDelegate
 
-    init(viewModel: ContentViewModel, webView: WKWebView) {
+    /*init(viewModel: ContentViewModel, webView: WKWebView) {
         self.viewModel = viewModel
         self.webView = webView
         self.navigationDelegate = WebViewNavigationDelegate(viewModel: viewModel)
+        setupNavigationObservers()
+    }*/
+    
+    init(viewModel: ContentViewModel, webView: WKWebView) {
+        self.viewModel = viewModel
+        self.webView = webView
+        self.navigationDelegate = WebViewNavigationDelegate(viewModel: viewModel, videoHistoryReference: viewModel.videoHistoryReference)
         setupNavigationObservers()
     }
 

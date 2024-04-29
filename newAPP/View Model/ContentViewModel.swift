@@ -8,6 +8,7 @@
 import Foundation
 import YouTubeKit
 import WebKit
+import SwiftUI
 
 class ContentViewModel: ObservableObject {
     @Published var searchText: String = ""
@@ -15,15 +16,24 @@ class ContentViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var videoIds: [String] = []
     @Published var titles: [String] = []
+    @Published var videoHistory: [VideoHistoryItem] = []
     @Published var videoDurations: [String: TimeInterval] = [:]
-    @Published var videoHistory: [(id: UUID, title: String?, duration: TimeInterval)] = []
-
     @Published var webView: WKWebView?
-    @Published var foods: [FoodItem] = []
-    @Published var foodName: String = ""
-    @Published var caloriesText: String = ""
-
+    var videoHistoryReference: Binding<[VideoHistoryItem]>? {
+        Binding<[VideoHistoryItem]>(
+            get: { self.videoHistory },
+            set: { self.videoHistory = $0 }
+        )
+    }
+    
     private let YTM = YouTubeModel()
+    
+    init() {
+        self.videoHistory = DataManager.shared.loadVideoHistory()
+    }
+    deinit {
+        DataManager.shared.saveVideoHistory(videoHistory)
+    }
 
     func searchVideos() {
         isLoading = true
@@ -66,11 +76,6 @@ class ContentViewModel: ObservableObject {
         webView?.load(request)
     }
 
-    func openYouTubeVideo(videoId: String) -> URL {
-        let url = URL(string: "https://www.youtube.com/watch?v=\(videoId)")!
-        return url
-    }
-
     func extractValueAfterSubstring1(in string: String, substring: String) -> String? {
         let pattern = "\(substring): \"([^\"]+)\""
         guard let regex = try? NSRegularExpression(pattern: pattern) else {
@@ -103,17 +108,11 @@ class ContentViewModel: ObservableObject {
         }
         return youtubeUrl.queryItems?.first(where: { $0.name == "v" })?.value
     }
-    func loadFoodItems() {
-        foods = DataManager.shared.loadFoodItems()
-    }
-
-    func addFood() {
-        if let calories = Int(caloriesText) {
-            let newFood = FoodItem(name: foodName, calories: calories)
-            foods.append(newFood)
-            foodName = ""
-            caloriesText = ""
-            DataManager.shared.saveFoodItems(foods)
+    
+    func loadVideoHistory() {
+        self.videoHistory = DataManager.shared.loadVideoHistory()
+        for video in self.videoHistory {
+            self.videoDurations[video.videoId] = video.duration
         }
     }
 }

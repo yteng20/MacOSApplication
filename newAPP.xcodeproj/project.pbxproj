@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D81EBBBD2BD07B5800987C36 /* WebViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */; };
-		D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBE2BD614A600987C36 /* FoodItem.swift */; };
+		D81EBBBF2BD614A600987C36 /* VideoHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBBE2BD614A600987C36 /* VideoHistoryItem.swift */; };
 		D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC12BD6156800987C36 /* PieChartView.swift */; };
 		D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBBC32BD668E900987C36 /* DataManager.swift */; };
 		D81EBC092BD98D7700987C36 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC082BD98D7700987C36 /* ContentViewModel.swift */; };
 		D81EBC0F2BD9A51700987C36 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC0E2BD9A51700987C36 /* SearchBar.swift */; };
 		D81EBC112BD9A52F00987C36 /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC102BD9A52F00987C36 /* VideoList.swift */; };
-		D81EBC132BD9A56D00987C36 /* DietView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EBC122BD9A56D00987C36 /* DietView.swift */; };
 		D8A181DF2BCCFFE600D3F10C /* newAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */; };
 		D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A181E02BCCFFE600D3F10C /* ContentView.swift */; };
 		D8A181E32BCCFFE900D3F10C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
@@ -48,13 +47,12 @@
 
 /* Begin PBXFileReference section */
 		D81EBBBC2BD07B5800987C36 /* WebViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewContainer.swift; sourceTree = "<group>"; };
-		D81EBBBE2BD614A600987C36 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		D81EBBBE2BD614A600987C36 /* VideoHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHistoryItem.swift; sourceTree = "<group>"; };
 		D81EBBC12BD6156800987C36 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		D81EBBC32BD668E900987C36 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D81EBC082BD98D7700987C36 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D81EBC0E2BD9A51700987C36 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		D81EBC102BD9A52F00987C36 /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
-		D81EBC122BD9A56D00987C36 /* DietView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietView.swift; sourceTree = "<group>"; };
 		D8A181DB2BCCFFE600D3F10C /* FitnessTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A181DE2BCCFFE600D3F10C /* newAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAPPApp.swift; sourceTree = "<group>"; };
 		D8A181E02BCCFFE600D3F10C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				D8A181E02BCCFFE600D3F10C /* ContentView.swift */,
 				D81EBC0E2BD9A51700987C36 /* SearchBar.swift */,
 				D81EBC102BD9A52F00987C36 /* VideoList.swift */,
-				D81EBC122BD9A56D00987C36 /* DietView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,7 +119,7 @@
 		D81EBC152BD9AB1D00987C36 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D81EBBBE2BD614A600987C36 /* FoodItem.swift */,
+				D81EBBBE2BD614A600987C36 /* VideoHistoryItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,9 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81EBC132BD9A56D00987C36 /* DietView.swift in Sources */,
 				D81EBC112BD9A52F00987C36 /* VideoList.swift in Sources */,
-				D81EBBBF2BD614A600987C36 /* FoodItem.swift in Sources */,
+				D81EBBBF2BD614A600987C36 /* VideoHistoryItem.swift in Sources */,
 				D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */,
 				D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */,
 				D81EBC092BD98D7700987C36 /* ContentViewModel.swift in Sources */,
@@ -507,6 +503,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"newAPP/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -534,6 +531,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"newAPP/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

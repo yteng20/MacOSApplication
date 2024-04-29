@@ -33,6 +33,9 @@ struct ContentView: View {
             VideoHistory(viewModel: viewModel)
         }
         .padding()
+        .onAppear {
+            viewModel.loadVideoHistory()
+        }
     }
 }
 
@@ -74,8 +77,11 @@ struct VideoHistory: View {
         }
         .padding()
         .frame(minWidth: 300)
+        /*.onAppear {
+            print("videoDurations: \(viewModel.videoDurations)")
+        }*/
     }
-
+    
     func formatDuration(_ duration: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]

@@ -5,37 +5,43 @@
 //  Created by Yue Teng on 4/26/24.
 //
 
-import ObjectiveC
 import WebKit
+import SwiftUI
 
 class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {
     let viewModel: ContentViewModel
-
-    init(viewModel: ContentViewModel) {
-        self.viewModel = viewModel
-    }
-
+    private var isVideoPlaying: Bool = false
     private var startTime: Date?
     private var currentVideoId: String?
+    private var videoHistoryReference: Binding<[VideoHistoryItem]>?
+
+    init(viewModel: ContentViewModel, videoHistoryReference: Binding<[VideoHistoryItem]>?) {
+        self.viewModel = viewModel
+        self.videoHistoryReference = videoHistoryReference
+    }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         if let url = webView.url, url.host == "www.youtube.com" {
             currentVideoId = viewModel.extractYouTubeVideoId(from: url)
             startTime = Date()
+            isVideoPlaying = true
         }
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let videoId = currentVideoId, let start = startTime {
+        if isVideoPlaying, let videoId = currentVideoId, let start = startTime {
             let duration = Date().timeIntervalSince(start)
-            viewModel.videoDurations[videoId] = (viewModel.videoDurations[videoId] ?? 0) + duration
-            
+
             let index = viewModel.videoIds.firstIndex(of: videoId) ?? 0
             let title = viewModel.titles[index]
-            viewModel.videoHistory.append((id: UUID(), title: title, duration: duration))
-            
+
+            let videoHistoryItem = VideoHistoryItem(id: UUID(), title: title, videoId: videoId, duration: duration)
+            videoHistoryReference?.wrappedValue.append(videoHistoryItem)
+            viewModel.videoDurations[videoId] = duration
+
             currentVideoId = nil
             startTime = nil
+            isVideoPlaying = false
         }
     }
 }

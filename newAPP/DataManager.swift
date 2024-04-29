@@ -9,39 +9,37 @@ import Foundation
 
 class DataManager {
     static let shared = DataManager()
-    
-    private let filename = "foodItems.json"
-    
-    func saveFoodItems(_ foodItems: [FoodItem]) {
+    private let videoHistoryFilename = "videoHistory.json"
+
+    func saveVideoHistory(_ videoHistory: [VideoHistoryItem]) {
         do {
             let encoder = JSONEncoder()
-            let data = try encoder.encode(foodItems)
-            let url = getDocumentsDirectory().appendingPathComponent(filename)
+            let data = try encoder.encode(videoHistory)
+            let url = getDocumentsDirectory().appendingPathComponent(videoHistoryFilename)
+
             if !FileManager.default.fileExists(atPath: url.path) {
                 FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
             }
+
             try data.write(to: url)
         } catch {
-            print("Error saving food items: \(error.localizedDescription)")
+            print("Error saving video history: \(error.localizedDescription)")
         }
     }
-    
-    func loadFoodItems() -> [FoodItem] {
+
+    func loadVideoHistory() -> [VideoHistoryItem] {
         do {
-            let url = getDocumentsDirectory().appendingPathComponent(filename)
+            let url = getDocumentsDirectory().appendingPathComponent(videoHistoryFilename)
             //print(url)
             let data = try Data(contentsOf: url)
-            //print(type(of: data))
             let decoder = JSONDecoder()
-            let foodItems = try decoder.decode([FoodItem].self, from: data)
-            //print(type(of: foodItems))
-            return foodItems
+            return try decoder.decode([VideoHistoryItem].self, from: data)
         } catch {
-            print("Error loading food items: \(error.localizedDescription)")
+            print("Error loading video history: \(error.localizedDescription)")
             return []
         }
     }
-    
+
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]

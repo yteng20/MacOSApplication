@@ -26,6 +26,10 @@ struct PieChart: View {
                         .padding()
                 }
             }
+            /*.onAppear {
+                print("PieChart data: \(data)")
+                print("PieChart colors: \(colors)")
+            }*/
         }
     }
 
