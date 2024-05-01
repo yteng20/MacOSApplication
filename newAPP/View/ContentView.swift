@@ -48,17 +48,26 @@ struct VideoHistory: View {
                 .font(.title)
             List {
                 ForEach(viewModel.videoHistory, id: \.id) { video in
-                    HStack {
-                        if let title = video.title {
-                            Text(title)
-                        } else {
-                            Text("Unknown Title")
+                    NavigationLink(destination: EmptyView()) {
+                        HStack {
+                            if let title = video.title {
+                                Text(title)
+                                    .foregroundColor(.blue)
+                                    .underline()
+                            } else {
+                                Text("Unknown Title")
+                            }
+                            Spacer()
+                            Text(formatDuration(video.duration))
+                                .font(.caption)
+                                .foregroundColor(.gray)
                         }
-                        Spacer()
-                        Text(formatDuration(video.duration))
-                            .font(.caption)
-                            .foregroundColor(.gray)
                     }
+                    .onTapGesture {
+                        let url = openYouTubeVideo(videoId: video.videoId)
+                        viewModel.loadURL(url)
+                    }
+                    Divider()
                 }
             }
             .padding()
@@ -77,11 +86,13 @@ struct VideoHistory: View {
         }
         .padding()
         .frame(minWidth: 300)
-        /*.onAppear {
-            print("videoDurations: \(viewModel.videoDurations)")
-        }*/
     }
-    
+
+    func openYouTubeVideo(videoId: String) -> URL {
+        let url = URL(string: "https://www.youtube.com/watch?v=\(videoId)")!
+        return url
+    }
+
     func formatDuration(_ duration: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]

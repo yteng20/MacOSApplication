@@ -32,12 +32,13 @@ class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         if isVideoPlaying, let videoId = currentVideoId, let start = startTime {
             let duration = Date().timeIntervalSince(start)
 
-            let index = viewModel.videoIds.firstIndex(of: videoId) ?? 0
-            let title = viewModel.titles[index]
+            if let index = viewModel.videoIds.firstIndex(of: videoId) {
+                let title = viewModel.titles.count > index ? viewModel.titles[index] : ""
 
-            let videoHistoryItem = VideoHistoryItem(id: UUID(), title: title, videoId: videoId, duration: duration)
-            videoHistoryReference?.wrappedValue.append(videoHistoryItem)
-            viewModel.videoDurations[videoId] = duration
+                let videoHistoryItem = VideoHistoryItem(id: UUID(), title: title, videoId: videoId, duration: duration)
+                videoHistoryReference?.wrappedValue.append(videoHistoryItem)
+                viewModel.videoDurations[videoId] = duration
+            }
 
             currentVideoId = nil
             startTime = nil

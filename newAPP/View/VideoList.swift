@@ -30,6 +30,7 @@ struct VideoList: View {
                             .font(.caption)
                     }
                 }
+                .buttonStyle(PlainButtonStyle())
             }
         }
         .frame(maxWidth: 300)
