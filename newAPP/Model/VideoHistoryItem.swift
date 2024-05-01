@@ -12,4 +12,5 @@ struct VideoHistoryItem: Identifiable, Encodable, Decodable {
     let title: String?
     let videoId: String
     let duration: TimeInterval
+    var isFavorite: Bool = false
 }

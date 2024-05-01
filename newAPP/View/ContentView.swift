@@ -42,55 +42,75 @@ struct ContentView: View {
 struct VideoHistory: View {
     @ObservedObject var viewModel: ContentViewModel
 
-    var body: some View {
-        VStack {
-            Text("Video History")
-                .font(.title)
-            List {
-                ForEach(viewModel.videoHistory, id: \.id) { video in
-                    NavigationLink(destination: EmptyView()) {
+        var body: some View {
+            VStack {
+                Text("Video History")
+                    .font(.title)
+                List {
+                    ForEach(viewModel.videoHistory.sorted { $0.isFavorite && !$1.isFavorite }, id: \.id) { video in
                         HStack {
-                            if let title = video.title {
-                                Text(title)
-                                    .foregroundColor(.blue)
-                                    .underline()
-                            } else {
-                                Text("Unknown Title")
+                            NavigationLink(destination: EmptyView()) {
+                                HStack {
+                                    if let title = video.title {
+                                        Text(title)
+                                            .foregroundColor(.blue)
+                                            .underline()
+                                    } else {
+                                        Text("Unknown Title")
+                                    }
+                                    Spacer()
+                                    Text(formatDuration(video.duration))
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
                             }
-                            Spacer()
-                            Text(formatDuration(video.duration))
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                            .onTapGesture {
+                                let url = openYouTubeVideo(videoId: video.videoId)
+                                viewModel.loadURL(url)
+                            }
+                            
+                            Button(action: {
+                                toggleFavorite(for: video)
+                            }) {
+                                Image(systemName: video.isFavorite ? "star.fill" : "star")
+                                    .foregroundColor(.yellow)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
+                        Divider()
                     }
-                    .onTapGesture {
-                        let url = openYouTubeVideo(videoId: video.videoId)
-                        viewModel.loadURL(url)
-                    }
-                    Divider()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .cornerRadius(10)
+
+                Text("Video Watch Time")
+                    .font(.title)
+
+                if !viewModel.videoDurations.isEmpty {
+                    PieChart(data: viewModel.videoDurations.map { Double($0.value) },
+                             colors: [.red, .green, .blue, .orange, .purple])
+                        .aspectRatio(1, contentMode: .fit)
+                        .padding()
                 }
             }
             .padding()
-            .frame(maxWidth: .infinity)
-            .cornerRadius(10)
-
-            Text("Video Watch Time")
-                .font(.title)
-
-            if !viewModel.videoDurations.isEmpty {
-                PieChart(data: viewModel.videoDurations.map { Double($0.value) },
-                         colors: [.red, .green, .blue, .orange, .purple])
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding()
-            }
+            .frame(minWidth: 300)
         }
-        .padding()
-        .frame(minWidth: 300)
-    }
-
+    
     func openYouTubeVideo(videoId: String) -> URL {
         let url = URL(string: "https://www.youtube.com/watch?v=\(videoId)")!
         return url
+    }
+
+    func toggleFavorite(for video: VideoHistoryItem) {
+        if let index = viewModel.videoHistory.firstIndex(where: { $0.id == video.id }) {
+            var updatedVideo = video
+            updatedVideo.isFavorite.toggle()
+            viewModel.videoHistory.remove(at: index)
+            viewModel.videoHistory.insert(updatedVideo, at: 0)
+            viewModel.videoHistory.sort { $0.isFavorite && !$1.isFavorite }
+        }
     }
 
     func formatDuration(_ duration: TimeInterval) -> String {

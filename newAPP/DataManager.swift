@@ -20,7 +20,7 @@ class DataManager {
             if !FileManager.default.fileExists(atPath: url.path) {
                 FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
             }
-
+            print(data)
             try data.write(to: url)
         } catch {
             print("Error saving video history: \(error.localizedDescription)")
