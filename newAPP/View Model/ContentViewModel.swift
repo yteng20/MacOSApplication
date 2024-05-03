@@ -19,6 +19,7 @@ class ContentViewModel: ObservableObject {
     @Published var videoHistory: [VideoHistoryItem] = []
     @Published var videoDurations: [String: TimeInterval] = [:]
     @Published var webView: WKWebView?
+    @Published var favoriteVideos: [VideoHistoryItem] = []
     var videoHistoryReference: Binding<[VideoHistoryItem]>? {
         Binding<[VideoHistoryItem]>(
             get: { self.videoHistory },

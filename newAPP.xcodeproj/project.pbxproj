@@ -26,6 +26,7 @@
 		D8F326FB2BCE45A40066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
 		D8F326FC2BCE45A50066B411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A181E22BCCFFE900D3F10C /* Assets.xcassets */; };
 		D8FD3E382BDB8196001FACEF /* WebViewNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3E372BDB8155001FACEF /* WebViewNavigationDelegate.swift */; };
+		D8FD3E402BE5905C001FACEF /* FavoriteVideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD3E3F2BE5905C001FACEF /* FavoriteVideoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D8F326E62BCD02530066B411 /* YouTubeKit */ = {isa = PBXFileReference; lastKnownFileType = text; path = YouTubeKit; sourceTree = SOURCE_ROOT; };
 		D8F326ED2BCDD3790066B411 /* fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fitness-icon-for-your-website-design-logo-app-ui-free-vector.jpg"; sourceTree = SOURCE_ROOT; };
 		D8FD3E372BDB8155001FACEF /* WebViewNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewNavigationDelegate.swift; sourceTree = "<group>"; };
+		D8FD3E3F2BE5905C001FACEF /* FavoriteVideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVideoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D8A181E02BCCFFE600D3F10C /* ContentView.swift */,
 				D81EBC0E2BD9A51700987C36 /* SearchBar.swift */,
 				D81EBC102BD9A52F00987C36 /* VideoList.swift */,
+				D8FD3E3F2BE5905C001FACEF /* FavoriteVideoList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				D81EBC112BD9A52F00987C36 /* VideoList.swift in Sources */,
 				D81EBBBF2BD614A600987C36 /* VideoHistoryItem.swift in Sources */,
 				D81EBBC42BD668E900987C36 /* DataManager.swift in Sources */,
+				D8FD3E402BE5905C001FACEF /* FavoriteVideoList.swift in Sources */,
 				D81EBBC22BD6156800987C36 /* PieChartView.swift in Sources */,
 				D81EBC092BD98D7700987C36 /* ContentViewModel.swift in Sources */,
 				D8A181E12BCCFFE600D3F10C /* ContentView.swift in Sources */,

@@ -18,17 +18,19 @@ struct ContentView: View {
                 if viewModel.isLoading {
                     ProgressView()
                 }
+                FavoriteVideoList(viewModel: viewModel)
                 if let searchResults = viewModel.searchResults {
                     VideoList(searchResults: searchResults,
-                              videoIds: $viewModel.videoIds,
-                              titles: $viewModel.titles,
+                              //videoIds: $viewModel.videoIds,
+                              //titles: $viewModel.titles,
                               viewModel: viewModel,
                               onVideoTap: viewModel.loadURL)
                 }
             }
             if let webView = viewModel.webView {
                 WebViewContainer(viewModel: viewModel, webView: webView)
-                    .frame(width: 640, height: 360)
+                    //.frame(width: 640, height: 360)
+                    .frame(minWidth: 640, maxWidth: .infinity, minHeight: 360, maxHeight: .infinity)
             }
             VideoHistory(viewModel: viewModel)
         }

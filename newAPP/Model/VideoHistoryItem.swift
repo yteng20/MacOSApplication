@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoHistoryItem: Identifiable, Encodable, Decodable {
+struct VideoHistoryItem: Identifiable, Encodable, Decodable, Equatable {
     var id = UUID()
     let title: String?
     let videoId: String

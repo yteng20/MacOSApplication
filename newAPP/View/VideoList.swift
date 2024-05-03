@@ -10,22 +10,21 @@ import YouTubeKit
 
 struct VideoList: View {
     let searchResults: SearchResponse
-    @Binding var videoIds: [String]
-    @Binding var titles: [String]
     @ObservedObject var viewModel: ContentViewModel
     let onVideoTap: (URL) -> Void
 
     var body: some View {
         List {
-            ForEach(Array(zip(searchResults.results.indices, searchResults.results)), id: \.0) { index, result in
+            ForEach(zip(searchResults.results, zip(viewModel.videoIds, viewModel.titles)).filter { !$0.1.0.isEmpty && !$0.1.1.isEmpty }, id: \.0.id) { result, idAndTitle in
+                let (videoId, title) = idAndTitle
                 Button(action: {
-                    let url = openYouTubeVideo(videoId: videoIds[index])
+                    let url = openYouTubeVideo(videoId: videoId)
                     onVideoTap(url)
                 }) {
                     HStack {
-                        Text(titles[index])
+                        Text(title)
                         Spacer()
-                        Text(formatDuration(viewModel.videoDurations[videoIds[index]] ?? 0))
+                        Text(formatDuration(viewModel.videoDurations[videoId] ?? 0))
                             .foregroundColor(.gray)
                             .font(.caption)
                     }
