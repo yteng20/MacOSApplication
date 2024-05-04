@@ -91,9 +91,10 @@ struct VideoHistory: View {
 
                 if !viewModel.videoDurations.isEmpty {
                     PieChart(data: viewModel.videoDurations.map { Double($0.value) },
-                             colors: [.red, .green, .blue, .orange, .purple])
-                        .aspectRatio(1, contentMode: .fit)
-                        .padding()
+                             colors: [.red, .green, .blue, .orange, .purple],
+                             titles: viewModel.videoHistory.map { $0.title ?? "Unknown Title" })
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding()
                 }
             }
             .padding()

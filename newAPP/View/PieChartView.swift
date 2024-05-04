@@ -10,14 +10,13 @@ import SwiftUI
 struct PieChart: View {
     var data: [Double]
     var colors: [Color]
+    var titles: [String]
 
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ForEach(0..<data.count, id: \.self) { index in
-                    PathShape(data: data,
-                              colors: colors,
-                              index: index)
+                    PathShape(data: data, colors: colors, index: index)
                         .fill(colors[index])
                         .frame(width: min(geometry.size.width, geometry.size.height),
                                height: min(geometry.size.width, geometry.size.height))
@@ -25,11 +24,14 @@ struct PieChart: View {
                                 y: (geometry.size.height - min(geometry.size.width, geometry.size.height)) / 2)
                         .padding()
                 }
+
+                ForEach(0..<data.count, id: \.self) { index in
+                    Text(titles[index])
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .offset(self.getTitleOffset(index: index, radius: min(geometry.size.width, geometry.size.height) / 2 + 20))
+                }
             }
-            /*.onAppear {
-                print("PieChart data: \(data)")
-                print("PieChart colors: \(colors)")
-            }*/
         }
     }
 
@@ -60,5 +62,11 @@ struct PieChart: View {
             return path
         }
     }
-    
+
+    func getTitleOffset(index: Int, radius: CGFloat) -> CGSize {
+        let angle = Angle.degrees(Double(index) / Double(data.count) * 360.0)
+        let x = radius * cos(angle.radians)
+        let y = radius * sin(angle.radians)
+        return CGSize(width: x, height: y)
+    }
 }
